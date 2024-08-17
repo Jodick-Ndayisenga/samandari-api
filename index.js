@@ -2,8 +2,6 @@ const express = require("express");
 const mongoose = require("mongoose");
 const cookieParser = require("cookie-parser");
 const cors = require("cors");
-
-// Import routes
 const authRoutes = require("./routes/authRoute");
 const applicationRoutes = require("./routes/applicationRoute");
 const chatRoute = require("./routes/chatRoute");
@@ -18,6 +16,7 @@ const courseRoute = require("./routes/courseRoutes");
 const adminRoute = require("./routes/adminRoute");
 
 const app = express();
+
 const testing = false;
 
 // Connect to MongoDB

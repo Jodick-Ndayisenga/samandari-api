@@ -1,6 +1,6 @@
 const express = require('express');
-const ablyConnection = require('../controllers/ablyController');
+const ablyConnection = require('../utils/ablyController');
 const router = express.Router();
-router.get("/ably", ablyConnection.ablyUserConnection);
 
+router.get("/ably", ablyConnection.ablyUserConnection);
 module.exports = router;

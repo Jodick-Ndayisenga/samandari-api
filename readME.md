@@ -1,15 +1,18 @@
 # Samandari API
 
 ## Project Description
-Samandari is a web application designed to help students in Burundi gain IT skills such as web design, AI, data science, and web development. It also teaches entrepreneurship and many other courses. The platform connects the best teachers with students most in need of these skills and provides a platform to share knowledge. Additionally, Samandari features a library containing school manuals and general books. Schools in Burundi can upload resources such as past papers, exams, and tests for others to refer to when revising or acquiring knowledge.
+Samandari is a web application designed to empower students in Burundi by providing access to essential IT and entrepreneurship skills. The platform offers a wide range of courses, including web design, artificial intelligence, data science, and web development, enabling students to acquire the knowledge necessary for success in the digital world. Samandari serves as a bridge between skilled teachers and students who need these skills the most, creating a dynamic learning environment where knowledge can be shared and applied effectively. Additionally, the platform has a comprehensive e-library that contains school manuals and general books, making educational resources easily accessible to students across the country. Schools in Burundi can also upload materials such as past papers, exams, and tests, providing a valuable resource for students preparing for their academic challenges.
 
+Beyond its educational offerings, Samandari includes an integrated development environment (IDE) that allows users to write, compile, and execute code online. This feature supports a variety of programming languages, including Python, PHP, JavaScript, Java, C#, and TypeScript, enabling students to practice and enhance their coding skills directly on the platform. Samandari also facilitates real-time communication between teachers and students, allowing for interactive learning experiences and timely feedback. By combining education, practical coding experience, and a rich library of resources, Samandari is playing a crucial role in equipping Burundian students with the skills they need to thrive in a rapidly evolving technological landscape.
+
+This web application has been designed to have a frontend and backend folders separated. This particular project is therefore the backend which ultimately is the API that powers the frontend.
 
 ## Folder Structure
 The project has the following folder structure:
 - **models**: Contains all object instances.
-- **controllers**: Contains functions to handle user requests and web interactions.
-- **routes**: Contains all endpoints (e.g., GET, POST, DELETE, PUT).
-- **middleware**: Includes functions to protect certain routes and manage sessions and cookies.
+- **controllers**: Contains different files of functions/methods to handle user requests and respond appropriately.
+- **routes**: Contains files of endpoints (e.g., GET, POST, DELETE, PUT).
+- **middleware**: Includes files of functions to protect certain routes and manage sessions and cookies.
 - **utils**: Contains necessary configurations such as Cloudinary for media handling, AWS for book storage, and Ably for real-time communication.
 
 ## Table of Contents
@@ -29,9 +32,10 @@ Samandari API is a powerful backend solution supporting the Samandari applicatio
 - User management (registration, authentication, and authorization)
 - Course management (creation, updating, and deletion)
 - Library management ( reading a book or class manual, updating the library )
-- Real time communication (realtime communication )
+- Real time communication (realtime communication, sending and receiving messages and notifications)
 - Dynamic resource management
 - Secure and scalable architecture
+- Post, sharing, commenting, and replying functionality
 
 ## Getting Started
 
@@ -58,7 +62,7 @@ Before you start, ensure you have the following installed:
     ```
 
 3. **Set up environment variables:**
-   - Create a `.env` file in the root directory and add the required environment variables:
+   - Create a `.env` file in the root directory and add the required environment variables and their correct values:
      ```
       cloudName= 
       apiKey= 
@@ -79,16 +83,17 @@ Before you start, ensure you have the following installed:
 
 4. **Start the server:**
     ```bash
-    npm start
+    npm run dev
     ```
     or
     ```bash
-    yarn start
+    yarn run dev
     ```
 
 ## Usage
 
 ### API Endpoints
+
 
 #### Authentication Routes (`authRout.js`)
 - **POST** `/api/verify-token` - Verify user token
@@ -148,5 +153,5 @@ _For a full list of endpoints and details, please contact me on information belo
 If you have any questions or feedback, feel free to reach out to the project maintainer:
 - **Name:** Jodick Ndayisenga
 - **Email:** rajajodick@gmail.com
-- **LinkedIn:** [Your LinkedIn Profile](https://www.linkedin.com/in/jodick-ndayisenga-1a9b28240/)
+- **LinkedIn:** [-LinkedIn Profile](https://www.linkedin.com/in/jodick-ndayisenga-1a9b28240/)
 
