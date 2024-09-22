@@ -9,7 +9,7 @@ This web application has been designed to have a frontend and backend folders se
 
 ## Folder Structure
 The project has the following folder structure:
-- **models**: Contains all object instances.
+- **models**: Contains all object classes ( blueprints ).
 - **controllers**: Contains different files of functions/methods to handle user requests and respond appropriately.
 - **routes**: Contains files of endpoints (e.g., GET, POST, DELETE, PUT).
 - **middleware**: Includes files of functions to protect certain routes and manage sessions and cookies.
