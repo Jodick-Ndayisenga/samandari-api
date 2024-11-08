@@ -10,8 +10,9 @@ This API powers Samandari, an educational platform designed by Jodick Ndayisenga
 - [Installation and Setup](#installation-and-setup)
 - [API Endpoints](#api-endpoints)
   - [User Management](#user-management)
-  - [Educational Resources](#educational-resources)
-  - [Study Room Management](#study-room-management)
+  - [AWS for Books](#aws-for-books)
+  - [Conversations And Study Room Management](#conversations-and-study-room-management)
+  - [Messages](#messages)
   - [Posts and Challenges](#posts-and-challenges)
 - [Technologies Used](#technologies-used)
 - [Contributing](#contributing)
@@ -50,3 +51,140 @@ The Samandari API repository is organized into the following folders to keep the
     - Cloudinary for media handling
     - AWS for book storage
     - Ably for real-time communication
+
+
+---
+### Installation and Setup
+
+Follow these steps to set up the project locally:
+
+1. **Clone the Repository**:
+```bash
+git clone https://github.com/yourusername/samandari-api.git
+cd samandari-api
+```
+
+2. **Install Dependencies**:
+```bash
+npm install
+```
+
+3. **Environment Variables**:Set up your `.env` file with the following variables:
+```txt
+cloudName= YOUR CLOUDINARY CLOUDNAME
+apiKey=YOUR CLOUDINARY API KEY
+apiSecret=YOUR CLOUDINARY API SECRET
+DB_URL= YOUR MONGODB URL FOR PRODUCTION
+DB_URL_TESTING= YOUR MONGODB URL FOR TESTING
+MODE_ENV = development
+JWT_SECRET = YOUR JSON WEBTONTOKEN SECRET
+ABLY_API_KEY = YOUR ABLY API KEY
+TOKEN_NAME = YOUR JSON_WEBTOKN_NAME
+AWS_KEY=YOUR AWS ACCESS KEY
+AWS_SECRET= YOUR AMAZON SECRET
+REGION=YOUR REGION
+BUCKET=YOUR BUCKET
+```
+
+4. **Run the Server**:
+```bash
+npm run dev
+```
+
+The API should now be running locally at `http://localhost:3001`
+
+---
+### API Endpoints
+- Define your root API endpoint
+assuming you are using react for your frontend:
+
+```javascript
+import axios from "axios";
+const API = axios.create({
+  baseURL: "http://localhost:3001",
+  withCredentials: true,
+});
+```
+
+#### **1. User Management**
+
+Endpoints for managing user registration, login, profile updates, notifications, and follow/unfollow actions.
+
+##### Endpoints
+
+**Verify Token**
+
+- URL: `/verify-token`
+- Method: `POST`
+- Description: Verifies the user's session token.
+- Example Request from Frontend:
+
+```javascript
+const verifyToken = async (userId) => {
+  try {
+    const response = await API.post('/user/verify-token', {userId});
+    return response.data.valid;
+
+  } catch (err) {
+    return false;
+  }
+};
+```
+
+
+**Login**
+
+- URL: `/login`
+- Method: `POST`
+- Description: Logs in a user and generates a session token.
+- Example Request from Frontend:
+
+```javascript
+const userLogin = async ( email, password)=>{
+  try {
+      const reponse = await API.post(`/user/login`, {email, password});
+      return reponse.data;
+  } catch (error) {
+      console.log(error);
+  }
+}
+```
+
+
+**Get User Details**
+
+- URL: `/user-details/:id`
+- Method: `GET`
+- Description: Retrieves a user's profile details.
+- Example Request from Frontend:
+
+```javascript
+const userLogin = async ( userId)=>{
+  try {
+      const reponse = await API.get(`/user/user-details`, {userId});
+      return reponse.data;
+  } catch (error) {
+      console.log(error);
+  }
+}
+```
+
+***User Logout***
+
+- URL: `/logout/:userId`
+- Method: `GET`
+- Description: Logs out a user and removes their session token.
+- Example Request from Frontend:
+
+```javascript
+const userLogout = async (userId)=>{
+  try {
+      const reponse = await API.get(`/user/logout/${userId}`);
+      return reponse.data;
+  } catch (error) {
+      console.log(error);
+  }
+}
+```
+
+<P style="text-align: center;font-style: italic">Other endpoints would follow similarly, providing descriptions and frontend request examples for each one.</P>
