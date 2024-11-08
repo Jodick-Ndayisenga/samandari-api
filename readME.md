@@ -17,7 +17,7 @@ This API powers Samandari, an educational platform designed by Jodick Ndayisenga
 - [Contributing](#contributing)
 - [License](#license)
 
-
+---
 ### Project Overview
 
 Samandari is a web platform aimed at supporting the Burundian community, particularly students, by addressing the severe shortage of educational materials. In Burundi, physical textbooks and study materials are scarce, making it challenging for students to access essential resources for their studies. Samandari fills this gap by offering an open digital platform where users can:
@@ -28,7 +28,7 @@ Samandari is a web platform aimed at supporting the Burundian community, particu
 
 Through these features, Samandari encourages collaboration and knowledge-sharing, enhancing educational opportunities for Burundian students and beyond.
 
-
+---
 ### Core Features
 
 - `E-Library`: Users can upload, recommend, and access a wide array of electronic textbooks and general reading materials, accessible to everyone on the platform.
@@ -37,6 +37,7 @@ Through these features, Samandari encourages collaboration and knowledge-sharing
 - `Real-Time Communication`: Follow, message, and collaborate with other users for improved group and individual interaction.
 - `Collaborative Learning in Technology`: Designed to introduce and foster interest in fields like programming, web development, and computer science for Burundian students, where these fields are still emerging.
 
+---
 ### Folder Structure
 
 The Samandari API repository is organized into the following folders to keep the codebase clean and easy to navigate:
