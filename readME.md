@@ -94,7 +94,9 @@ npm run dev
 The API should now be running locally at `http://localhost:3001`
 
 ---
+
 ### API Endpoints
+
 - Define your root API endpoint
 assuming you are using react for your frontend:
 
@@ -106,11 +108,11 @@ const API = axios.create({
 });
 ```
 
-#### **1. User Management**
+### **1. User Management**
 
 Endpoints for managing user registration, login, profile updates, notifications, and follow/unfollow actions.
 
-##### Endpoints
+### ***Endpoints***
 
 **Verify Token**
 
@@ -150,7 +152,6 @@ const userLogin = async ( email, password)=>{
 }
 ```
 
-
 **Get User Details**
 
 - URL: `/user-details/:id`
@@ -169,7 +170,7 @@ const userLogin = async ( userId)=>{
 }
 ```
 
-***User Logout***
+**User Logout**
 
 - URL: `/logout/:userId`
 - Method: `GET`
@@ -187,4 +188,328 @@ const userLogout = async (userId)=>{
 }
 ```
 
-<P style="text-align: center;font-style: italic">Other endpoints would follow similarly, providing descriptions and frontend request examples for each one.</P>
+***... Other endpoints would follow similarly, providing descriptions and frontend request examples for each one.***
+
+### **2. AWS for Books**
+
+### ***Endpoints***
+
+for handling file uploads, listing, downloading, and deletion of resources in AWS.
+Endpoints
+
+Upload File
+
+- URL: `/upload/:typeOfResource`
+- Method: `POST`
+- Description: Uploads a file to AWS and associates it with a specific resource type.
+- Example Request:
+
+```javascript
+const formData = new FormData();
+formData.append("file", selectedFile);
+const uploadFile = async (typeOfResource) => {
+  try {
+    const response = await API.post(`/aws/upload/${typeOfResource}`, formData, {
+      headers: {
+        "Content-Type": "multipart/form-data",
+      },
+    });
+    return response.data;
+  } catch (error) {
+    console.log(error);
+  }
+}
+```
+
+List Files
+
+- URL: `/list`
+- Method: `GET`
+- Description: Retrieves a list of uploaded files.
+- Example Request:
+
+```javascript
+const getFileList = async (typeOfResource) => {
+  try {
+    const response = await API.get(`/aws/list/${typeOfResource}`);
+    return response.data;
+  } catch (error) {
+    console.log(error);
+  }
+}
+```
+
+### Additional Endpoints
+
+*... Continue listing endpoints with examples for each as needed.*
+
+### **3. Conversations And Study Room Management**
+
+Endpoints for creating conversations, fetching conversations, and managing conversation states.
+
+### ***Endpoints***
+
+Create Message
+
+- URL: `chats/create-chat`
+- Method: `POST`
+- Description: Creates a new conversation.
+- Example Request:
+
+```javascript
+const createConversation = async (userId1, userId2) => {
+    try {
+        const response = await API.post("chats/create-chat", {userId1, userId2});
+        return response.data;
+    } catch (error) {
+        console.error("Error creating conversation", error);
+        throw error;
+    }
+};
+```
+
+Get Conversations
+
+- URL: `chats/conversations/:userId`
+- Method: `GET`
+- Description: Fetches all conversations for a specific user.
+- Example Request:
+
+```javascript
+const getConversations = async (userId) => {
+    try {
+        const response = await API.get(`/chats/conversations/${userId}`);
+        return response.data;
+    } catch (error) {
+        console.error("Error fetching conversations", error);
+        throw error;
+    }
+};
+```
+
+Find Conversation
+
+- URL: `chats/find/:userID1/:userID2`
+- Method: `GET`
+- Description: Fetches a specific conversation based on user IDs.
+- Example Request:
+
+```javascript
+const findConversation = async (userId1, userId2) => {
+    try {
+        const response = await API.get(`/chats/find/${userId1}/${userId2}`);
+        return response.data;
+    } catch (error) {
+        console.error("Error finding conversation", error);
+        throw error;
+    }
+};
+```
+
+#### Additional Endpoints
+
+***... Additional endpoints follow with detailed explanations and examples.***
+
+
+
+### **4. Messages**
+
+Endpoints for managing messages in conversations, marking messages as read, and handling notifications.
+Endpoints
+
+### **Endpoints**
+
+Create Message
+
+- URL: `/messages/create-message`
+- Method: `POST`
+- Description: Creates a new message.
+- Example Request:
+
+```javascript
+const createMessage = async (userId, conversationId, message) => {
+    try {
+        const response = await API.post("/messages/create-message", { userId, conversationId, message });
+        return response.data;
+    } catch (error) {
+        console.error("Error creating message", error);
+        throw error;
+    }
+};
+```
+
+Get Messages
+
+- URL: `/messages/unread-messages/:conversationId/:userId`
+- Method: `GET`
+- Description: Fetches all messages in a specific conversation.
+- Example Request:
+
+```javascript
+const getMessages = async (userId, conversationId) => {
+    try {
+        const response = await API.get(`/messages/get-messages/${userId, conversationId}`);
+        return response.data;
+    } catch (error) {
+        console.error("Error fetching messages", error);
+        throw error;
+    }
+};
+```
+
+Mark Message as Read
+
+- URL: `/messages/unread-messages/:conversationId/:userId`
+- Method: `POST`
+- Description: Marks messages as read.
+- Example Request:
+
+```javascript
+const markMessagesAsRead = async (userId, conversationId) => {
+    try {
+        const response = await API.post("/messages/mark-as-read", { userId, conversationId });
+        return response.data;
+    } catch (error) {
+        console.error("Error marking messages as read", error);
+        throw error;
+    }
+};
+```
+
+### **5. Posts and Challenges**
+
+Endpoints for creating posts, liking/disliking posts and comments, commenting on posts, and managing shares and reposts.
+
+### **Endpoints**
+
+Create Post
+
+- URL: `/posts/create-post/:theUserId/:fileStatus`
+- Method: `POST`
+- Description: Creates a new post for a user with a specific file status.
+- Example Request:
+
+```javascript
+const createPost = async (userId, fileStatus, data) => {
+    try {
+        const response = await API.post(`/posts/create-post/${userId}/${fileStatus}`, data);
+        return response.data;
+    } catch (error) {
+        console.error("Error creating post", error);
+        throw error;
+    }
+};
+```
+
+Fetch recent posts
+
+- URL: `/posts/get-posts/:id/:page/fetchedPostIds`
+- Method: `GET`
+- Description: Fetches recent posts for a user.
+- Example Request:
+
+```javascript
+const fetchRecentPosts = async (id, page, fetchedPostIds) => {
+  try {
+    const params = {
+      fetchedPostIds: fetchedPostIds.join(','), // Convert list of IDs to a comma-separated string
+    };
+    const response = await API.get(`/posts/get-posts/${id}/${page}`, {params});
+    return response.data;
+  } catch (error) {
+    console.error('Error fetching recent posts:', error);
+    throw error;
+  }
+};
+``` 
+
+Like Post
+
+- URL: `/posts/like/:postId/:userId`
+- Method: `POST`
+- Description: Likes a post.
+- Example Request:
+
+```javascript
+const likePost = async (postId, userId) => {
+    try {
+        const response = await API.post(`/posts/like/${postId}/${userId}`);
+        return response.data;
+    } catch (error) {
+        console.error("Error liking post", error);
+        throw error;
+    }
+};
+```
+
+Dislike Post
+
+- URL: `/posts/dislike/:postId/:userId`
+- Method: `POST`
+- Description: Dislikes a post.
+- Example Request:
+
+```javascript
+const dislikePost = async (postId, userId) => {
+    try {
+        const response = await API.post(`/posts/dislike/${postId}/${userId}`);
+        return response.data;
+    } catch (error) {
+        console.error("Error disliking post", error);
+        throw error;
+    }
+};
+```
+
+Comment post
+
+- URL: `/posts/comment/:postId/`
+- Method: `POST`
+- Description: Comments on a post.
+- Example Request:
+
+```javascript
+const commentPost = async (postId, userId, comment) => {
+    try {
+        const response = await API.post(`/posts/comment/${postId}`, { userId, comment });
+        return response.data;
+    } catch (error) {
+        console.error("Error commenting on post", error);
+        throw error;
+    }
+};
+``` 
+
+#### Additional Endpoints
+
+***... Continue to list other post-related endpoints with corresponding descriptions and Axios examples.***
+
+---
+
+### Technologies Used
+
+`Backend`: *Node.js, Express*
+`Database`: *MongoDB*
+`Cloud Storage`: *AWS, Cloudinary*
+`Real-Time Communication`: *Ably*
+`Authentication`: *JSON Web Tokens (JWT)*
+
+---
+
+### Contributing
+
+We welcome contributions to Samandari! To contribute:
+
+- Fork the repository.
+- Create a new branch for your feature (`git checkout -b feature-name`).
+- Commit your changes (`git commit -m 'Add feature'`).
+- Push to the branch (`git push origin feature-name`).
+- Submit a pull request for review.
+
+---
+
+### License
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
