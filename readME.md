@@ -36,7 +36,7 @@ Through these features, Samandari encourages collaboration and knowledge-sharing
 - `Study Rooms`: Users can form study groups around subjects and communicate in real-time, enhancing collaborative learning.
 - `Posts and Challenges`: Users can post challenges, puzzles, and questions for community engagement. The platform includes an online code editor and compiler to facilitate coding collaboration, allowing users to test solutions directly within the platform.
 - `Real-Time Communication`: Follow, message, and collaborate with other users for improved group and individual interaction.
-- `Collaborative Learning in Technology`: Designed to introduce and foster interest in fields like programming, web development, and computer science for Burundian students, where these fields are still emerging.
+- `Collaborative Learning in Technology`: Designed to introduce and strenghen interest in fields like programming, web development, and computer science for Burundian students, where these fields are still in flux.
 
 ---
 ### Folder Structure
@@ -241,7 +241,7 @@ const getFileList = async (typeOfResource) => {
 
 ### Additional Endpoints
 
-*... Continue listing endpoints with examples for each as needed.*
+***... Other endpoints would follow similarly, providing descriptions and frontend request examples for each one.***
 
 ### **3. Conversations And Study Room Management**
 
@@ -308,7 +308,7 @@ const findConversation = async (userId1, userId2) => {
 
 #### Additional Endpoints
 
-***... Additional endpoints follow with detailed explanations and examples.***
+***... Other endpoints would follow similarly, providing descriptions and frontend request examples for each one.***
 
 
 
@@ -482,7 +482,7 @@ const commentPost = async (postId, userId, comment) => {
 
 #### Additional Endpoints
 
-***... Continue to list other post-related endpoints with corresponding descriptions and Axios examples.***
+***... Other endpoints would follow similarly, providing descriptions and frontend request examples for each one.***
 
 ---
 
