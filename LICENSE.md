@@ -1,4 +1,4 @@
-Space-Ed Africa License
+## Space-Ed Africa License
 
 This software, including all source code, documentation, and resources, is the property of Space-Ed Africa. By using, copying, or distributing this software, you agree to the following terms:
 
