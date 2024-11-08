@@ -60,7 +60,7 @@ Follow these steps to set up the project locally:
 
 1. **Clone the Repository**:
 ```bash
-git clone https://github.com/yourusername/samandari-api.git
+git clone https://github.com/Jodick-Ndayisenga/samandari-api.git
 cd samandari-api
 ```
 
