@@ -1,27 +1,6 @@
 const Message = require("../models/message.model");
 const Conversation = require("../models/conversation.model");
 
-
-// const createMessage = async (req, res) => {
-//   const newMessage = req.body.convoId;
-//   const convoId = newMessage.convoId;
-//   try {
-//     const conversation = await Conversation.findById(convoId);
-
-//     if (conversation) {
-//       const message = await Message.create(newMessage);
-//       conversation.lastMessage = message._id;
-//       await conversation.save();
-//       //const result = await Conversation.updateMany({}, { $set: { unreadCount: 0 } });
-//       //const results = await Message.updateMany({ read: { $exists: true } }, { $set: { read: true } });
-//       res.status(200).json({ message });
-//     }
-//   } catch (error) {
-//     console.log(error);
-//     res.status(500).json(error);
-//   }
-// };
-
 const createMessage = async (req, res) => {
   try {
       const message = req.body.message;

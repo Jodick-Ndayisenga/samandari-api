@@ -185,41 +185,6 @@ exports.getUsersToFollow = async (req, res) => {
   }
 };
 
-exports.getUserToShare = async (req, res) => {
-  const { userId } = req.params;
-  const Ids = req.query.fetchedUserIds;
-  let fetchedUserIds = Ids ? Ids.split(",") : [];
-  try {
-    // Fetch the current user to get followers and following lists
-    const user = await User.findById(userId)
-      .select("followers following")
-      .exec();
-
-    if (!user) {
-      return res.status(404).json({ message: "User not found" });
-    }
-
-    // Combine followers and following, and filter out already fetched users
-    const combinedIds = [...user.followers, ...user.following].map((id) =>
-      id.toString()
-    );
-    const uniqueIds = [...new Set(combinedIds)];
-    const filteredIds = uniqueIds.filter((id) => !fetchedUserIds.includes(id));
-
-    // Fetch user details from filteredIds
-    const usersToShareWith = await User.find({
-      _id: { $in: filteredIds },
-    })
-      .select("_id firstName lastName profileUrl username email")
-      .limit(10)
-      .exec();
-
-    res.status(200).json({ users: usersToShareWith });
-  } catch (error) {
-    console.error("Error fetching users to share:", error);
-    res.status(500).json({ message: "Internal server error" });
-  }
-};
 
 exports.logoutUser = async (req, res) => {
   try {
