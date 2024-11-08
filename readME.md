@@ -488,11 +488,11 @@ const commentPost = async (postId, userId, comment) => {
 
 ### Technologies Used
 
-`Backend`: *Node.js, Express*
-`Database`: *MongoDB*
-`Cloud Storage`: *AWS, Cloudinary*
-`Real-Time Communication`: *Ably*
-`Authentication`: *JSON Web Tokens (JWT)*
+1. `Backend`: *Node.js, Express*
+2. `Database`: *MongoDB*
+3. `Cloud Storage`: *AWS, Cloudinary*
+4. `Real-Time Communication`: *Ably*
+5. `Authentication`: *JSON Web Tokens (JWT)*
 
 ---
 
@@ -507,8 +507,6 @@ We welcome contributions to Samandari! To contribute:
 - Submit a pull request for review.
 
 ---
-
-### License
 
 ## License
 
